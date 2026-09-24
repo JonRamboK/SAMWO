@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAMWO — Shafiq Awan Memorial Welfare Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152219;
+    --forest:#0E3524;
+    --forest-2:#123A28;
+    --green:#1C8F4D;
+    --green-soft:#DCEEE1;
+    --gold:#C6A24D;
+    --gold-soft:#EFE3C4;
+    --maroon:#9E2A2F;
+    --blue:#1F5FA6;
+    --paper:#F6F1E6;
+    --paper-2:#EDE6D3;
+    --card:#FFFEFB;
+    --line: rgba(20,35,25,0.14);
+    --on-dark:#F3EFE2;
+    --on-dark-dim: rgba(243,239,226,0.72);
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  :root:not([data-theme="light"]) {}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151E17;
+      --paper-2:#1B241B;
+      --card:#1E281F;
+      --ink:#EDEBE0;
+      --line: rgba(237,235,224,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151E17;
+    --paper-2:#1B241B;
+    --card:#1E281F;
+    --ink:#EDEBE0;
+    --line: rgba(237,235,224,0.14);
+  }
+  html{ scroll-behavior:smooth; scroll-padding-top:78px; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans',system-ui,-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  .wrap{ width:100%; max-width:1120px; margin:0 auto; padding:0 28px; }
+  h1,h2,h3{ font-family:'Fraunces',serif; font-weight:500; letter-spacing:-0.01em; color:var(--ink); }
+  .urdu{ font-family:'Noto Nastaliq Urdu',serif; direction:rtl; }
+  section{ position:relative; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:40;
+    padding-top: env(safe-area-inset-top,0px);
+    background: rgba(246,241,230,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+    transition: background .3s;
+  }
+  :root[data-theme="dark"] nav, @media (prefers-color-scheme: dark){ nav{ background: rgba(21,30,23,0.86);} }
+  .navwrap{ display:flex; align-items:center; justify-content:space-between; padding:12px 28px; max-width:1120px; margin:0 auto; }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .brand img{ width:40px; height:40px; border-radius:50%; }
+  .brand span{ font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; color:var(--ink); line-height:1.15; }
+  .navlinks{ display:flex; align-items:center; gap:30px; list-style:none; }
+  .navlinks a{ text-decoration:none; font-size:14.5px; color:var(--ink); opacity:.82; padding:4px 0; border-bottom:1px solid transparent; }
+  .navlinks a:hover{ opacity:1; border-color:var(--gold); }
+  .navcta{ display:inline-flex; align-items:center; gap:8px; background:var(--forest); color:var(--on-dark); padding:9px 18px; border-radius:30px; font-size:14px; font-weight:600; text-decoration:none; white-space:nowrap; }
+  .navcta:hover{ background:var(--green); }
+  .burger{ display:none; background:none; border:0; cursor:pointer; padding:6px; }
+  .burger span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(720px 420px at 82% -10%, rgba(198,162,77,0.18), transparent 60%),
+      linear-gradient(180deg,var(--forest),var(--forest-2));
+    color:var(--on-dark);
+    padding:76px 0 90px;
+    overflow:hidden;
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.25fr 0.85fr; gap:56px; align-items:center; }
+  .kicker{ font-size:14.5px; color:var(--gold-soft); letter-spacing:.02em; margin-bottom:18px; }
+  .kicker b{ color:var(--gold); }
+  .urdu-line{ font-size:44px; line-height:1.5; color:#fff; margin-bottom:6px; }
+  .hero h1{ font-size:38px; line-height:1.18; color:#fff; font-weight:500; max-width:11.5ch; margin-bottom:20px; }
+  .hero p.lead{ font-size:17px; color:var(--on-dark-dim); max-width:46ch; margin-bottom:32px; }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:30px; text-decoration:none; font-weight:600; font-size:14.5px; border:1px solid transparent; }
+  .btn-gold{ background:var(--gold); color:#20180a; }
+  .btn-gold:hover{ background:#d7b45f; }
+  .btn-outline{ border-color: rgba(243,239,226,0.4); color:var(--on-dark); }
+  .btn-outline:hover{ border-color:var(--on-dark); }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:0; border-top:1px solid rgba(243,239,226,0.18); padding-top:22px; }
+  .hero-meta div{ padding-right:28px; margin-right:28px; border-right:1px solid rgba(243,239,226,0.18); }
+  .hero-meta div:last-child{ border-right:none; }
+  .hero-meta b{ display:block; font-family:'Fraunces',serif; font-size:20px; color:var(--gold); font-weight:600; }
+  .hero-meta span{ font-size:12.5px; color:var(--on-dark-dim); }
+  .hero-emblem{ display:flex; justify-content:center; align-items:center; }
+  .hero-emblem .ring{
+    position:relative; width:320px; height:320px; border-radius:50%;
+    background: conic-gradient(from 180deg, rgba(198,162,77,0.5), transparent 30%, rgba(198,162,77,0.5) 60%, transparent 90%);
+    display:flex; align-items:center; justify-content:center;
+    padding:14px;
+  }
+  .hero-emblem img{ width:100%; height:100%; border-radius:50%; box-shadow:0 30px 60px -20px rgba(0,0,0,0.55); }
+
+  /* ---------- SECTION HEAD ---------- */
+  .eyebrow-row{ display:flex; align-items:baseline; gap:16px; margin-bottom:14px; }
+  .eyebrow-row .num{ font-family:'Fraunces',serif; font-style:italic; font-size:15px; color:var(--gold); }
+  .sec-head{ max-width:60ch; margin-bottom:46px; }
+  .sec-head h2{ font-size:30px; }
+  .sec-head p{ color:var(--ink); opacity:.72; font-size:15.5px; margin-top:12px; max-width:56ch; }
+
+  /* ---------- STORY ---------- */
+  .story{ padding:100px 0; }
+  .story-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px; }
+  .story-copy p{ color:var(--ink); opacity:.85; font-size:16px; margin-bottom:16px; max-width:52ch; }
+  .story-copy p:last-child{ margin-bottom:0; }
+  .stat-list{ border-top:1px solid var(--line); }
+  .stat-row{ display:flex; justify-content:space-between; align-items:baseline; padding:20px 0; border-bottom:1px solid var(--line); }
+  .stat-row b{ font-family:'Fraunces',serif; font-size:26px; color:var(--forest); font-weight:600; }
+  :root[data-theme="dark"] .stat-row b{ color:var(--gold); }
+  @media (prefers-color-scheme: dark){ .stat-row b{ color:var(--gold); } }
+  .stat-row span{ font-size:13.5px; opacity:.68; text-align:right; max-width:22ch; }
+
+  /* ---------- MISSION ---------- */
+  .mission{ background:var(--paper-2); padding:100px 0; }
+  .pillars{ display:grid; grid-template-columns:repeat(5,1fr); gap:22px; }
+  .pillar{ text-align:left; }
+  .hex{ width:64px; height:56px; clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+  .hex svg{ width:26px; height:26px; }
+  .pillar h3{ font-size:16.5px; font-weight:600; margin-bottom:8px; }
+  .pillar p{ font-size:13.8px; opacity:.72; line-height:1.55; }
+  .p-edu .hex{ background:var(--blue); } .p-edu svg{ stroke:#fff; }
+  .p-health .hex{ background:var(--maroon); } .p-health svg{ stroke:#fff; }
+  .p-sport .hex{ background:var(--green); } .p-sport svg{ stroke:#fff; }
+  .p-comm .hex{ background:var(--gold); } .p-comm svg{ stroke:#20180a; }
+  .p-women .hex{ background:var(--forest); } .p-women svg{ stroke:#fff; }
+
+  /* ---------- LEADERSHIP ---------- */
+  .leaders{ padding:100px 0; }
+  .leader{ display:grid; grid-template-columns:220px 1fr; gap:44px; align-items:start; padding:46px 0; border-top:1px solid var(--line); }
+  .leader:last-child{ border-bottom:1px solid var(--line); }
+  .leader img{ width:220px; height:255px; object-fit:cover; border-radius:6px; box-shadow:0 20px 40px -22px rgba(0,0,0,0.35); }
+  .leader-role{ font-size:13px; color:var(--gold); text-transform:none; font-weight:600; margin-bottom:6px; }
+  :root[data-theme="dark"] .leader-role, @media (prefers-color-scheme:dark){ .leader-role{ color:var(--gold);} }
+  .leader h3{ font-size:24px; margin-bottom:14px; }
+  .leader blockquote{ font-family:'Fraunces',serif; font-style:italic; font-size:19px; color:var(--forest); border-left:3px solid var(--gold); padding-left:18px; margin:16px 0 16px; max-width:44ch; }
+  :root[data-theme="dark"] .leader blockquote{ color:var(--gold-soft);}
+  @media (prefers-color-scheme:dark){ .leader blockquote{ color:var(--gold-soft);} }
+  .leader p.bio{ font-size:15px; opacity:.78; max-width:56ch; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{ background:var(--paper-2); padding:100px 0; }
+  .gallery-sub{ font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--forest); margin:40px 0 18px; }
+  .gallery-sub:first-of-type{ margin-top:0; }
+  :root[data-theme="dark"] .gallery-sub{ color:var(--gold); }
+  @media (prefers-color-scheme:dark){ .gallery-sub{ color:var(--gold); } }
+  .gallery-grid{ column-count:4; column-gap:16px; }
+  .gallery-item{ display:block; break-inside:avoid; margin-bottom:16px; border-radius:6px; overflow:hidden; box-shadow:0 14px 30px -18px rgba(0,0,0,0.35); background:var(--card); }
+  .gallery-item img{ width:100%; display:block; transition:transform .35s ease; }
+  .gallery-item:hover img{ transform:scale(1.04); }
+  @media (max-width:920px){ .gallery-grid{ column-count:3; } }
+  @media (max-width:640px){ .gallery-grid{ column-count:2; } }
+
+  /* ---------- CREDENTIALS ---------- */
+  .creds{ background:linear-gradient(180deg,var(--forest-2),var(--forest)); color:var(--on-dark); padding:96px 0; }
+  .creds .sec-head p{ color:var(--on-dark-dim); }
+  .creds .sec-head h2{ color:#fff; }
+  .seal-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+  .seal{ border:1px solid rgba(198,162,77,0.4); border-radius:8px; padding:28px 24px; background:rgba(243,239,226,0.04); }
+  .seal .tag{ font-size:12px; color:var(--gold); font-weight:600; margin-bottom:10px; }
+  .seal b{ display:block; font-family:'Fraunces',serif; font-size:17px; color:#fff; margin-bottom:8px; line-height:1.35; }
+  .seal span{ font-size:13.5px; color:var(--on-dark-dim); font-family:'Public Sans',monospace; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ padding:100px 0 60px; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 0.9fr; gap:56px; }
+  .contact-list{ list-style:none; }
+  .contact-list li{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .contact-list b{ display:block; font-size:13px; opacity:.6; font-weight:600; margin-bottom:3px; }
+  .contact-list a, .contact-list span.val{ font-size:15.5px; text-decoration:none; }
+  .contact-list a:hover{ color:var(--forest); }
+  .cta-card{ background:var(--forest); color:var(--on-dark); border-radius:10px; padding:38px 34px; }
+  .cta-card h3{ color:#fff; font-size:22px; margin-bottom:12px; }
+  .cta-card p{ font-size:14.5px; color:var(--on-dark-dim); margin-bottom:26px; }
+  .cta-card .btn-gold{ width:100%; justify-content:center; margin-bottom:10px; }
+  .cta-card .btn-outline{ width:100%; justify-content:center; }
+
+  footer{ background:var(--forest-2); color:var(--on-dark-dim); padding:46px 0; padding-bottom: calc(46px + env(safe-area-inset-bottom,0px)); }
+  .foot-wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .foot-brand{ display:flex; align-items:center; gap:12px; }
+  .foot-brand img{ width:34px; height:34px; border-radius:50%; }
+  .foot-brand span{ font-family:'Fraunces',serif; color:#fff; font-size:15px; }
+  footer small{ font-size:12.5px; }
+  .foot-links{ display:flex; gap:22px; list-style:none; font-size:13.5px; }
+  .foot-links a{ text-decoration:none; }
+
+  @media (max-width:920px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-emblem{ order:-1; margin-bottom:8px; }
+    .hero-emblem .ring{ width:220px; height:220px; }
+    .urdu-line{ font-size:32px; }
+    .hero h1{ font-size:30px; max-width:none; }
+    .story-grid{ grid-template-columns:1fr; gap:40px; }
+    .pillars{ grid-template-columns:repeat(2,1fr); }
+    .leader{ grid-template-columns:150px 1fr; gap:24px; }
+    .leader img{ width:150px; height:175px; }
+    .seal-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .navlinks{ position:fixed; top:65px; left:0; right:0; background:var(--paper); flex-direction:column; align-items:flex-start; padding:20px 28px; border-bottom:1px solid var(--line); transform:translateY(-130%); transition:transform .25s ease; gap:16px; }
+    .navlinks.open{ transform:translateY(0); }
+    .burger{ display:block; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navwrap">
+    <a class="brand" href="#top">
+      <img src="./logo.jpeg" alt="SAMWO logo">
+      <span>SAMWO</span>
+    </a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="navcta" href="tel:+923182363450">Call Us</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Registered Non-Profit · <b>Karachi, Sindh, Pakistan</b></div>
+      <div class="urdu-line urdu">خدمت ہمارا نصب العین</div>
+      <h1>Service is our purpose. Community is our work.</h1>
+      <p class="lead">Shafiq Awan Memorial Welfare Organization brings education, healthcare, sports, community development and women empowerment programmes to underserved communities across Sindh.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#mission">Our Mission</a>
+        <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>2019</b><span>Year founded</span></div>
+        <div><b>05</b><span>Focus areas</span></div>
+        <div><b>DGSW(S) & SN-9673594591787512</b><span>Sindh Govt. registration</span></div>
+      </div>
+    </div>
+    <div class="hero-emblem">
+      <div class="ring"> <img src="./WhatsApp Image 2026-09-24 at 8.10.54 AM.jpeg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <div class="eyebrow-row"><span class="num">01</span></div>
+      <div class="sec-head" style="margin-bottom:26px;">
+        <h2>Our story</h2>
+      </div>
+      <div class="story-copy">
+        <p>SAMWO was established on 27 June 2019 in Karachi as a platform for educationists, health workers, coaches, volunteers and community leaders to work toward one goal: sustainable, dignified support for the people around them.</p>
+        <p>What began as one founder's commitment to community service has grown into an organisation working across education, health, sports, community development and women empowerment — built on the belief that a healthy, educated and empowered community is the foundation of a stronger Pakistan.</p>
+        <p>Every programme is carried out in partnership with government institutions, educational bodies, volunteers and socially responsible individuals, with a shared commitment to transparency, accountability and lawful practice.</p>
+      </div>
+    </div>
+    <div class="stat-list">
+      <div class="stat-row"><b>27 Jun 2019</b><span>Date SAMWO was formally established</span></div>
+      <div class="stat-row"><b>Karachi</b><span>Headquartered at Hawksbay Road, Maripur</span></div>
+      <div class="stat-row"><b>5 pillars</b><span>Education, Health, Sports, Community, Women</span></div>
+      <div class="stat-row"><b>Registrations</b><span>Government of Sindh &amp; Sindh Charity Commission Government of sindh &amp; Social Walefare Department Government of sindh</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num">02</span></div>
+    <div class="sec-head">
+      <h2>Where we focus</h2>
+      <p>Five connected pillars — because a healthy, educated, empowered and engaged community is built one programme at a time.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar p-edu">
+        <div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <h3>Education</h3>
+        <p>Widening access to schooling and learning support for children in underserved neighbourhoods.</p>
+      </div>
+      <div class="pillar p-health">
+        <div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 12.5a4.8 4.8 0 0 1 0-6.8c1.9-1.9 5-1.5 6.6.6l.6.8.6-.8c1.6-2.1 4.7-2.5 6.6-.6a4.8 4.8 0 0 1 0 6.8L12 20l-7.2-7.5Z"/></svg></div>
+        <h3>Health</h3>
+        <p>Basic care access, awareness activities and support connecting families to medical services.</p>
+      </div>
+      <div class="pillar p-sport">
+        <div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg></div>
+        <h3>Sports &amp; Youth</h3>
+        <p>Grassroots talent identification, training access and pathways for young athletes across Sindh.</p>
+      </div>
+      <div class="pillar p-comm">
+        <div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="9" cy="7" r="3.2"/><path d="M22 20v-1a3.6 3.6 0 0 0-2.7-3.5M15.5 3.8a3.2 3.2 0 0 1 0 6.1"/></svg></div>
+        <h3>Community Dev.</h3>
+        <p>Grassroots partnerships with local leaders that turn shared needs into lasting local projects.</p>
+      </div>
+      <div class="pillar p-women">
+        <div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4.2"/><path d="M12 12.2V21M8.5 17.5h7"/></svg></div>
+        <h3>Women Empowerment</h3>
+        <p>Inclusion, skills and leadership opportunities that help women shape their own communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="leaders" id="leadership">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num">03</span></div>
+    <div class="sec-head">
+      <h2>Leadership</h2>
+      <p>The people carrying SAMWO's mission forward, in coordination with volunteers and partners across Sindh.</p>
+    </div>
+
+    <div class="leader">
+      <img src="./nisar.jpeg" alt="Muhammad Nisar Awan">
+      <div>
+        <div class="leader-role">Founder &amp; President</div>
+        <h3>Muhammad Nisar Awan</h3>
+        <blockquote>“Together we can achieve greatness.”</blockquote>
+        <p class="bio">An educationist, social welfare professional, NGO consultant and community development advocate, Muhammad Nisar Awan founded SAMWO to give dedicated professionals, volunteers and community leaders a shared platform for sustainable, meaningful social impact across Sindh.</p>
+      </div>
+    </div>
+
+    <div class="leader">
+      <img src="./waseem akhter.PNG" alt="">
+      <div>
+        <div class="leader-role">Vice President &amp; Sports Coordinator — Sindh (SAMWO)</div>
+        <h3>Waseem Akhtar</h3>
+        <blockquote>“Where talent finds opportunity, communities find a future.”</blockquote>
+        <p class="bio">Waseem Akhtar leads SAMWO's sports vision — grassroots talent identification, training opportunities and connections to institutions — so that youth from underserved communities can build a future at the district, provincial, national and international level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num">04</span></div>
+    <div class="sec-head">
+      <h2>Gallery</h2>
+      <p>Media coverage, events and publications documenting SAMWO's work across Sindh.</p>
+    </div>
+
+    <h3 class="gallery-sub">In the press</h3>
+    <div class="gallery-grid">
+      <a class="gallery-item" href="./gallery/1 (1).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (2).jpeg" alt="Daily Veer Times Hyderabad — coverage of SAMWO's Taekwondo academy prize distribution"></a>
+      <a class="gallery-item" href="./gallery/1 (3).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (4).jpeg" alt="Daily Humraaz Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (5).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (6).jpeg" alt="Daily Nida-e-Sindh Sukkur — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (7).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (8).jpeg" alt="The Daily Dhartaty News Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (9).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (10).jpeg" alt="Roznama Awaz-e-Sindh Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (11).jpeg" alt="Daily Parwan Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (12).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (13).jpeg" alt="Daily Sarwech Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (14).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (15).jpeg" alt="Daily Hararat Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+      <a class="gallery-item" href="./gallery/1 (16).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (17).jpeg" alt="Daily Harif News Karachi — coverage of SAMWO's Taekwondo academy event"></a>
+    </div>
+
+    <h3 class="gallery-sub">Events &amp; publications</h3>
+    <div class="gallery-grid">
+      <a class="gallery-item" href="./gallery/1 (6).jpeg" target="_blank" rel="noopener"><img src="./gallery/1 (9).jpeg" alt="SAMWO at the GDEWG Meeting 2026"></a>
+      <a class="gallery-item" href="." target="_blank" rel="noopener"><img src="./gallery/1 (7).jpeg" alt="SAMWO — Empowering Communities Through Education and Sports"></a>
+      <!-- <a class="gallery-item" href="./gallery/event-team-meeting.jpg" target="_blank" rel="noopener"><img src="./gallery/event-team-meeting.jpg" alt="SAMWO team at a Deputy Commissioner Karachi South meeting"></a>
+      <a class="gallery-item" href="./gallery/event-samwo-official.jpg" target="_blank" rel="noopener"><img src="./gallery/event-samwo-official.jpg" alt="SAMWO Official — Empowering Sindh through education, sports and community development"></a>
+      <a class="gallery-item" href="./gallery/profile-cover-1.jpg" target="_blank" rel="noopener"><img src="./gallery/profile-cover-1.jpg" alt="SAMWO Organization Profile 2026–2027 edition, cover"></a>
+      <a class="gallery-item" href="./gallery/profile-cover-2.jpg" target="_blank" rel="noopener"><img src="./gallery/profile-cover-2.jpg" alt="SAMWO Organization Profile 2026–2027 edition, cover"></a>
+      <a class="gallery-item" href="./gallery/profile-cover-3.jpg" target="_blank" rel="noopener"><img src="./gallery/profile-cover-3.jpg" alt="SAMWO Organization Profile 2026–2027 edition, cover"></a>
+      <a class="gallery-item" href="./gallery/profile-cover-4.jpg" target="_blank" rel="noopener"><img src="./gallery/profile-cover-4.jpg" alt="SAMWO Organization Profile 2026–2027 edition, cover"></a> -->
+    </div>
+  </div>
+</section>
+
+<section class="creds" id="credentials">
+  <div class="wrap">
+    <div class="eyebrow-row"><span class="num">05</span></div>
+    <div class="sec-head">
+      <h2>Registered &amp; accountable</h2>
+      <p>SAMWO operates as a lawfully registered non-profit, committed to transparency in every partnership.</p>
+    </div>
+    <div class="seal-grid">
+      <div class="seal">
+        <div class="tag">GOVERNMENT OF SINDH</div>
+        <b>Social Welfare Department</b>
+        <span>Registration No. DGSW(S) SN-9673594591787512</span>
+      </div>
+      <div class="seal">
+        <div class="tag">CHARITY REGULATOR</div>
+        <b>Sindh Charity Commission</b>
+        <span>Registration No. SN-9673594591787512</span>
+      </div>
+      <div class="seal">
+        <div class="tag">HEAD OFFICE</div>
+        <b>House # 1226, Muslim Colony</b>
+        <span>Hawksbay Road, Maripur, near Pakistan Marine Academy, Karachi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow-row"><span class="num">06</span></div>
+      <div class="sec-head" style="margin-bottom:26px;">
+        <h2>Get in touch</h2>
+        <p>Reach out to collaborate, volunteer or support a programme.</p>
+      </div>
+      <ul class="contact-list">
+        <li>
+          <div>
+            <b>Address</b>
+            House # 1226, Muslim Colony, Hawksbay Road, Maripur, Near Pakistan Marine Academy, Karachi
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Phone Whatsapps</b>
+            <a href="https://wa.me/923182363450">+92 318 236 3450</a> &nbsp;·&nbsp; <a href="https://wa.me/923322206967">+92 332 220 6967</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Email</b>
+            <a href="mailto:muhammadnisarawan011@gmail.com">muhammadnisarawan011@gmail.com</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>TikTok</b>
+            <a href="https://www.tiktok.com/@user678380265">Nisar Awan SAMWO</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Follow</b>
+            <a href="https://youtube.com/@samwoofficial?si=TfQP3QpfSJCwAjIK" target="_blank" rel="noopener">YouTube</a> &nbsp;·&nbsp; <span class="val"><a href="https://facebook.com/nisfia82">Facebook</a></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="cta-card">
+      <h3>Partner with SAMWO</h3>
+      <p>Whether you're a government body, corporate partner, volunteer or philanthropist — there's a place to work together.</p>
+      <a class="btn btn-gold" href="mailto:muhammadnisarawan011@gmail.com">Email Us</a>
+      <a class="btn btn-outline" href="tel:+923182363450">Call +92 318 236 3450</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <div class="foot-brand">
+      <img src="./logo.jpeg" alt="SAMWO logo">
+      <span>Shafiq Awan Memorial Welfare Organization</span>
+    </div>
+    <ul class="foot-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="wrap" style="margin-top:22px;">
+    <small>&copy; 2026 Shafiq Awan Memorial Welfare Organization (SAMWO). Registered with the Social Welfare Department, Govt. of Sindh — DGSW(S) SN-9673594591787512.</small>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  burger.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+</script>
+</body>
+</html>
